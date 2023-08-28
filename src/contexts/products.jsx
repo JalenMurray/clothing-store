@@ -1,8 +1,6 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState } from 'react';
 
 import PRODUCTS from '../shop-data.json';
-
-import { onAuthStateChangedListener, createUserDocumentFromAuth } from '../utils/firebase/firebase.utils';
 
 export const ProductsContext = createContext({
   products: [],
