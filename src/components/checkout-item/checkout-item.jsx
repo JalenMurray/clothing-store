@@ -1,4 +1,12 @@
-import './checkout-item.scss';
+import {
+  CheckoutItemContainer,
+  ImageContainer,
+  DetailInfo,
+  Quantity,
+  Arrow,
+  Value,
+  RemoveButton,
+} from './checkout-item.styles';
 
 const CheckoutItem = ({ item, addHandler, removeHandler }) => {
   const { name, imageUrl, price, quantity } = item;
@@ -10,25 +18,19 @@ const CheckoutItem = ({ item, addHandler, removeHandler }) => {
   const removeAllItemFromCart = () => removeHandler(item, true);
 
   return (
-    <div className="checkout-item-container">
-      <div className="image-container">
+    <CheckoutItemContainer>
+      <ImageContainer>
         <img src={imageUrl} alt={name} />
-      </div>
-      <h2 className="name">{name}</h2>
-      <span className="quantity">
-        <div className="arrow" onClick={removeSingleItemFromCart}>
-          &#10094;
-        </div>
-        <span className="value">{quantity}</span>
-        <div className="arrow" onClick={addSingleItemToCart}>
-          &#10095;
-        </div>
-      </span>
-      <span className="price">${price}</span>
-      <div className="remove-button" onClick={removeAllItemFromCart}>
-        &#10005;
-      </div>
-    </div>
+      </ImageContainer>
+      <DetailInfo>{name}</DetailInfo>
+      <Quantity>
+        <Arrow onClick={removeSingleItemFromCart}>&#10094;</Arrow>
+        <Value>{quantity}</Value>
+        <Arrow onClick={addSingleItemToCart}>&#10095;</Arrow>
+      </Quantity>
+      <DetailInfo>${price}</DetailInfo>
+      <RemoveButton onClick={removeAllItemFromCart}>&#10005;</RemoveButton>
+    </CheckoutItemContainer>
   );
 };
 

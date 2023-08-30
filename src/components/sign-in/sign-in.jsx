@@ -4,7 +4,7 @@ import { signInWithGooglePopup, signInAuthUserWithEmailAndPassword } from '../..
 import FormInput from '../form-input/form-input';
 import Button from '../button/button';
 
-import './sign-in.scss';
+import { SignInContainer, ButtonContainer, Header } from './sign-in.styles';
 
 const defaultFormFields = {
   email: '',
@@ -44,20 +44,20 @@ const SignIn = () => {
   };
 
   return (
-    <div className="sign-in-container">
-      <h2>I already have an account</h2>
+    <SignInContainer>
+      <Header>I already have an account</Header>
       <span>Sign in with your email and password</span>
       <form onSubmit={handleSubmit}>
         <FormInput label="Email" name="email" type="email" required value={email} onChange={handleChange} />
         <FormInput label="Password" name="password" type="password" required value={password} onChange={handleChange} />
-        <div className="buttons-container">
+        <ButtonContainer>
           <Button type="submit">SIGN IN</Button>
           <Button type="button" onClick={signInWithGoogle} buttonType="google">
             GOOGLE SIGN IN
           </Button>
-        </div>
+        </ButtonContainer>
       </form>
-    </div>
+    </SignInContainer>
   );
 };
 
